@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title><?php echo $setup['website_name'];?></title>
+<link href="./home/public/css/base.css" rel="stylesheet">
+  <link href="./home/public/css/index.css" rel="stylesheet">
+  <link href="./home/public/css/bootstrap.min.css" rel="stylesheet">
+<script src="./home/public/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+  <div id="logo"><a href="/"></a></div>
+  <nav class="topnav" id="topnav">
+    <a href="#"><span>首页</span><span class="en">Protal</span></a>
+    <a href="./home/model/about.php"><span>关于我</span><span class="en">About</span></a>
+    <a href="./home/model/message.php"><span>留言板</span><span class="en">message</span></a></nav>
+  </nav>
+</header>
+<div class="banner">
+  <section class="box">
+    <div class="avatar"><img src="<?php echo$pic;?>"><span><?php echo $user['user_name'];?></span> </div>
+  </section>
+</div>
+<div class="template">
+  <div class="box">
+  </div>
+</div>
+<article>
+  <h2 class="title_tj">
+    <p>文章<span>推荐</span></p>
+  </h2>
+  <div class="bloglist left">
+    <?php foreach($art_rew as $value):?>
+    <h5><?php echo $value['art_title'];?></h5>
+    <figure><img src="<?php echo $value['art_cover'];?>"></figure>
+    <ul>
+      <?php
+        $content =  strip_tags($value['art_content']);
+        $content = mb_substr( $content, 0, 80, 'utf-8' );
+        $content.='......';
+      ?>
+      <p><?php echo $content;?></p>
+      <a  href="./home/model/article.php?art_id=<?php echo$value['art_id'];?> "style="text-decoration:none" class="readmore">阅读全文>></a>
+    </ul>
+    <p class="dateview"><span><?php echo date('Y-m-d h:i:s',$value['aer_time']);?> </span><span>作者：<?php echo $value['user_name'];?></span><span>个人博客：[<a href="./home/model/class.php?art_clo=<?php echo $value['col_id'];?>"><?php echo $value['col_content'];?></a>]</span></p>
+  <?php endforeach ?>
+    <?php  echo $page->create();?>
+  </div>
+  <aside class="right">
+    <div class="weather"><iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&icon=1&num=1"></iframe></div>
+    <div class="news">
+    <h3>
+      <p>最新<span>文章</span></p>
+    </h3>
+    <ul class="rank">
+      <?php foreach($new_art_rew as $value):?>
+      <li><a href="./home/model/article.php?art_id=<?php echo$value['art_id'];?>" title="<?php echo $value['art_title'];?>" ><?php echo $value['art_title'];?></a></li>
+      <?php endforeach ?>
+    </ul>
+    <h3 class="ph">
+      <p>栏目<span>分类</span></p>
+    </h3>
+    <ul class="paih">
+      <?php foreach($class_rew as $value):?>
+      <li><a href="./home/model/class.php?art_clo=<?php echo $value['col_id'];?>" title="<?php echo $value['col_message'];?>" target="_blank"><?php echo $value['col_content'];?></a></li>
+      <?php endforeach ?>
+    </ul>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+</script>
+  </aside>
+</article>
+<footer>
+  <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup['icp_code'];?></a> </p>
+</footer>
+<script src="js/silder.js"></script>
+</body>
+</html>

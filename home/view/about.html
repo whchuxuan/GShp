@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>关于我</title>
+<link href="../public/css/base.css" rel="stylesheet">
+<link href="../public/css/about.css" rel="stylesheet">
+<script src="../public/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="../../index.php"><span>首页</span><span class="en">Protal</span></a>
+        <a href="#"><span>关于我</span><span class="en">About</span></a>
+        <a href="./message.php"><span>留言板</span><span class="en">Gustbook</span></a></nav>
+    </nav>
+</header>
+
+<article class="aboutcon">
+    <div class="about left">
+    <ul>
+        <?php echo $user_rows['user_meg'];?>
+    </ul>
+
+</div>
+<aside class="right">
+    <div class="about_c">
+    <p>姓名：<?php echo $user_rows['user_name'];?> </p>
+    <p>生日：<?php echo $user_rows['user_Birthday'];?></p>
+    <p>邮箱：<?php echo $user_rows['user_mail'];?></p>
+     <p>电话：<?php echo $user_rows['user_phone'];?></p>
+     <p>QQ：<?php echo $user_rows['user_qq'];?></p>
+</div>
+</aside>
+</article>
+<footer>
+    <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup['icp_code'];?></a> </p>
+</footer>
+<script src="js/silder.js"></script>
+</body>
+</html>

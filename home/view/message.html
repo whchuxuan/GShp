@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="../public/css/base.css" rel="stylesheet">
+    <link href="../public/css/index.css" rel="stylesheet">
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../public/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+    <div id="logo"><a href="/"></a></div>
+    <nav class="topnav" id="topnav">
+        <a href="../../index.php"><span>首页</span><span class="en">Protal</span></a>
+        <a href="./home/model/about.php"><span>关于我</span><span class="en">About</span></a>
+        <a href="#"><span>留言板</span><span class="en">Gustbook</span></a></nav>
+    </nav>
+</header>
+
+<div class="template">
+    <div class="box">
+    </div>
+</div>
+<article>
+    <div class="ad">
+        <form role="form" style="width: 80%;" method="post" action="./dle_insert_msg.php" onsubmit=" return show()">
+            <div class="form-group">
+                <label for="name">姓名:</label>me_content
+                <input type="text" class="form-control" placeholder="请输入名字" id="name" name="name" maxlength="6">
+            </div>
+            <div class="form-group">
+                <label for="name">留言:</label>
+                <input type="hidden" value="<?php echo $art_id;?>" name="art_id">
+                <textarea class="form-control" rows="3" id="content" name="content" maxlength="50" placeholder="来说两句嘛"></textarea>
+            </div>
+            <input class="btn btn-default" type="submit" value="提交" style="margin-left: 750px;">
+        </form>
+        <table class="table"  style="width: 80%;">
+            <thead>
+            <tr>
+                <th style="width: 100px;">姓名</th>
+                <th style="width: 450px;">内容</th>
+                <th>时间</th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php foreach($mes_rews as $value):?>
+                <tr>
+                    <td><?php echo $value['me_name'];?></td>
+                    <td><?php echo $value['me_content'];?></td>
+                    <td><?php echo date('Y-m-d H:s:i',$value['me_time']);?></td>
+                </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
+    </div>
+</article>
+<footer>
+    <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup['icp_code'];?></a> </p>
+</footer>
+<script>
+    function show() {
+        if(document.getElementById('name').value ===''){
+            alert("请输入你的姓名");
+            return false;
+        }else if(document.getElementById('content').value ===''){
+            alert("请说两句吧");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
+

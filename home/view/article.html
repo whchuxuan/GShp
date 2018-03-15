@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>文章详情</title>
+<link href="../public/css/base.css" rel="stylesheet">
+<link href="../public/css/new.css" rel="stylesheet">
+<script src="../public/js/modernizr.js"></script>
+  <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<?php include'../view/head.html';?>
+<article class="blogs">
+  <div class="index_about">
+    <h2 class="c_titile"><?php echo $art_row['art_title'];?></h2>
+    <p class="box_c"><span class="d_time">发布时间：<?php echo date('Y-m-d h:i:s',$art_row['aer_time']);?></span><span>编辑：<?php echo $art_row['user_name'];?></span> <span>浏览：<?php echo $art_row['art_num'];?></span><span>栏目：<a href=""><?php echo $art_row['col_content'];?></a></span></p>
+    <ul class="infos">
+      <?php echo $art_row['art_content'];?>
+    </ul>
+    <div class="otherlink">
+      <h2 style="background: url(../public/images/pl.png) 10px center no-repeat;background-size: 20px;">评论</h2>
+    </div>
+    <div class="ad">
+      <form role="form" style="width: 80%;" method="post" action="./dle_insert_dis.php" onsubmit=" return show()">
+        <div class="form-group">
+          <label for="name">姓名:</label>
+          <input type="text" class="form-control" placeholder="请输入名字" id="name" name="name" maxlength="6">
+        </div>
+        <div class="form-group">
+          <label for="name">评论:</label>
+          <input type="hidden" value="<?php echo $art_id;?>" name="art_id">
+          <textarea class="form-control" rows="3" id="content" name="content" maxlength="50"></textarea>
+        </div>
+        <input class="btn btn-default" type="submit" value="提交">
+      </form>
+      <table class="table">
+        <thead>
+        <tr>
+          <th style="width: 100px;">姓名</th>
+          <th style="width: 450px;">内容</th>
+          <th>时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($dis_rew as $value):?>
+        <tr>
+          <td><?php echo $value['dis_name'];?></td>
+          <td><?php echo $value['dis_content'];?></td>
+          <td><?php echo date('Y-m-d :H:i:s',$value['dis_tiem']);?> </td>
+        </tr>
+        <?php endforeach ?>
+        </tbody>
+      </table>
+    </div>
+    <div class="otherlink">
+      <h2>相关文章</h2>
+      <ul>
+        <?php foreach($tuijian_rew as $value):?>
+        <li><a href="./article.php?art_id=<?php echo$value['art_id'];?>" title="<?php echo$value['art_title'];?>"><?php echo$value['art_title'];?></a></li>
+        <?php endforeach ?>
+      </ul>
+    </div>
+    <div class="">
+    </div>
+  </div>
+  <?php include'../view/right.html';?>
+</article>
+<footer>
+  <p> <a href="http://www.1flove.com/" target="_blank"><?php echo$setup['icp_code'];?></a> </p>
+</footer>
+<script src="js/silder.js"></script>
+</body>
+</html>
+<script>
+  function show() {
+      if(document.getElementById('name').value ===''){
+          alert("请输入姓名");
+          return false;
+      }else if(document.getElementById('content').value ===''){
+          alert("请输入留言内容");
+          return false;
+      }
+  }
+</script>

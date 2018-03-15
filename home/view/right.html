@@ -1,0 +1,26 @@
+<aside class="right">
+    <div class="weather"><iframe width="250" scrolling="no" height="60" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=1&icon=1&num=1"></iframe></div>
+    <div class="news">
+        <h3>
+            <p>最新<span>文章</span></p>
+        </h3>
+        <ul class="rank">
+            <?php foreach($new_art_rew as $value):?>
+            <li><a href="../model/article.php?art_id=<?php echo$value['art_id'];?>" title="<?php echo $value['art_title'];?>" target="_blank"><?php echo $value['art_title'];?></a></li>
+            <?php endforeach ?>
+        </ul>
+        <h3 class="ph">
+            <p>栏目<span>分类</span></p>
+        </h3>
+        <ul class="paih">
+            <?php foreach($class_rew as $value):?>
+            <li><a href="./class.php?art_clo=<?php echo $value['col_id'];?>" title="<?php echo $value['col_message'];?>" ><?php echo $value['col_content'];?></a></li>
+            <?php endforeach ?>
+        </ul>
+    </div>
+    <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6574585" ></script>
+    <script type="text/javascript" id="bdshell_js"></script>
+    <script type="text/javascript">
+        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+    </script>
+</aside>
